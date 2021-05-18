@@ -1,0 +1,10 @@
+<h1>Due Today</h1>
+<% @tasks.each do |task| %>
+
+  <ol>
+    <p>Task: <%= task.title %></p>
+    <p>Description: <%= task.description %></p>
+    <p>Due by:<%= task.duedate %></p>
+  </ol>
+<% end %>
+

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  duedate: 2021-05-16 22:43:18
+  completed: false
+  overdue: false
+
+two:
+  title: MyString
+  description: MyString
+  duedate: 2021-05-16 22:43:18
+  completed: false
+  overdue: false
