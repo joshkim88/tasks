@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   # Order all tasks by ascending order
   def index
-    @tasks = Task.all.order(duedate: :asc)
+    if params[:query].present?
+      @tasks = Task.where("title LIKE ?", params[:query])
+    else
+      @tasks = Task.all.order(duedate: :asc)
+    end
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -66,6 +70,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description, :duedate, :completed)
+      params.require(:task).permit(:title, :description, :duedate, :completed, :file)
     end
 end

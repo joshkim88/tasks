@@ -25,5 +25,13 @@
   <%= @task.overdue? %>
 </p>
 
+<p>
+  <strong>Files:</strong>
+  <% if @task.file.attached? %>
+    <%= link_to 'View', @task.file %> |
+    <%= link_to 'Download', @task.file, download: '' %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

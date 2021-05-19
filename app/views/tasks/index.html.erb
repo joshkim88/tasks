@@ -2,6 +2,19 @@
 
 <h1>Team Task Manager</h1>
 
+<br>
+
+<%= form_tag tasks_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form",
+    placeholder: "Search for a task"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<br>
+
 <table>
   <thead>
     <tr>
