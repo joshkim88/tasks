@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  belongs_to :user
   has_one_attached :file
   #use scope on Task model to mark overdue Tasks if the present date is greater than duedate.
   scope :overdue, -> { where("duedate < ?", Time.now) }

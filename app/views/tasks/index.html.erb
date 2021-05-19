@@ -1,10 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Team Task Manager</h1>
 
 <br>
 
-<%= form_tag tasks_path, method: :get do %>
+<div class="searchBar text-center pb-4">
+  <%= form_tag tasks_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form",
@@ -12,10 +10,26 @@
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
+</div>
 
 <br>
 
-<table>
+
+  <div class="text-center">
+    <h3>
+      <a href="btn btn-primary">
+        <%= link_to 'Add a new task', new_task_path %>
+      </a>
+    </h3>
+  </div>
+
+  <div class="text-center p-4">
+    <h1>
+      All Tasks
+    </h1>
+  </div>
+
+  <table class="table">
   <thead>
     <tr>
       <th>Task</th>
@@ -24,6 +38,7 @@
       <th>Due date</th>
       <th>Overdue?</th>
       <th>Completed?</th>
+      <th>Created by</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -37,9 +52,12 @@
         <td><%= task.duedate %></td>
         <td><%= task.overdue? %></td>
         <td><%= task.completed %></td>
-        <td><%= link_to 'Show', task %></td>
+        <td><%= task.user.email %></td>
+        <td><%= link_to 'View', task %></td>
+        <% if task.user == current_user %>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -48,8 +66,13 @@
 <br>
 <br>
 
-<h1>DUE TODAY!</h1>
-<table>
+  <div class="text-center">
+    <h1>
+      Due Today!
+    </h1>
+  </div>
+
+<table class="table">
   <thead>
     <tr>
       <th>Task</th>
@@ -58,6 +81,7 @@
       <th>Due date</th>
       <th>Overdue?</th>
       <th>Completed?</th>
+      <th>Created by</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -71,16 +95,15 @@
         <td><%= task.duedate %></td>
         <td><%= task.overdue? %></td>
         <td><%= task.completed %></td>
-        <td><%= link_to 'Show', task %></td>
+        <td><%= task.user.email %></td>
+        <td><%= link_to 'View', task %></td>
+        <% if task.user == current_user %>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<p>
-  <%= link_to 'New Task', new_task_path %>
-</p>

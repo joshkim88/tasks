@@ -1,3 +1,5 @@
+<div class="text-center">
+
 <%= form_with(model: task, local: true) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
@@ -40,3 +42,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+
