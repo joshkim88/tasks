@@ -34,7 +34,11 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
+<% if @task.user == current_user %>
+  <%= link_to 'Edit |', edit_task_path(@task) %>
+  <%= link_to 'Delete |', @task, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
 <%= link_to 'Back', tasks_path %>
 </div>
 
